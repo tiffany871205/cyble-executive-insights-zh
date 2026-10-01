@@ -3,3 +3,5 @@
 .operational-page .op-tabs{margin-bottom:12px}
 .operational-page .op-layout{margin-top:0}
 .operational-page .op-alert-dist{margin-top:0}
+/* Reset the global main layout on the nested Operational Insights content column. */
+.operational-page main.op-main{margin:0!important;padding:0!important}
