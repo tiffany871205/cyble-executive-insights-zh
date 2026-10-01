@@ -1,0 +1,7 @@
+.subpage-head:has(.alerts-page-title){padding-top:4px;padding-bottom:18px}
+.alerts-page-title{display:flex;align-items:center;gap:10px!important;font-size:26px!important;line-height:1.2!important;font-weight:500!important;letter-spacing:0!important;margin:0 0 5px!important}
+.alerts-title-bell{width:27px;height:27px;fill:none;stroke:#58a2ff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.alerts-page-title .help-wrap{margin-left:0}
+.alerts-page-title .help-q{width:20px;height:20px;font-size:13px;line-height:16px;border-color:#8490a2;color:#8490a2}
+.subpage-head:has(.alerts-page-title)>p{font-size:14px;color:#858e9e}
+.subpage-head:has(.alerts-page-title) .alerts-tools{top:2px}
