@@ -35,4 +35,4 @@
 /* Keep the Darkweb flyout open while moving the pointer from the globe icon into it. */
 .darkweb-flyout{left:50px!important}
 .darkweb-flyout::before{content:"";position:absolute;left:-18px;top:0;width:18px;height:100%;background:transparent}
-.darkweb-nav-wrap:hover .darkweb-flyout,.darkweb-nav-wrap:focus-within .darkweb-flyout,.darkweb-flyout:hover{display:block!important}
+.darkweb-nav-wrap:hover .darkweb-flyout,.darkweb-flyout:hover{display:block!important}
