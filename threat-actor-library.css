@@ -2,3 +2,7 @@
 
 /* Threat actor cards expand on pointer hover, matching the supplied reference behavior. */
 .tal-card{transition:border-color .18s ease,background .18s ease}.tal-card h2{color:#59a5ff}.tal-expanded{display:none;margin-top:16px;padding-top:14px;border-top:1px solid #2b2d33}.tal-expanded section{margin:0 0 14px}.tal-expanded h3{margin:0 0 8px;color:#8f98a8;font-size:14px;font-weight:500}.tal-expanded p{margin:0;color:#a4acba;line-height:1.55;font-size:14px}.tal-expanded a{color:#59a5ff}.tal-country-chips{display:flex;gap:6px;flex-wrap:wrap}.tal-country-chips span{background:#26272d;border:1px solid #34363e;border-radius:6px;padding:5px 8px;color:#aeb5c3;font-size:13px}.tal-summary{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.tal-card:hover{border-color:#3a404c;background:#18191d}.tal-card:hover .tal-metrics{display:none}.tal-card:hover .tal-expanded{display:block}.tal-card:hover{min-height:500px}.tal-card footer{margin-top:auto}@media (hover:none){.tal-card:focus-within .tal-expanded{display:block}.tal-card:focus-within .tal-metrics{display:none}}
+/* Let a hovered card expand without stretching the other cards in the same row. */
+.tal-grid{align-items:start!important}
+.tal-card{align-self:start!important;height:auto!important}
+.tal-card:hover{min-height:500px}
