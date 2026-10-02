@@ -44,3 +44,21 @@
 
 .threat-nav-wrap::after{content:"";position:absolute;left:38px;top:-14px;width:70px;height:84px;background:transparent;pointer-events:auto}
 .threat-nav-wrap:hover .threat-flyout,.threat-flyout:hover,.threat-nav-wrap:has(.threat-flyout:hover) .threat-flyout{display:block!important}
+
+/* Lower rail flyouts: Attack Surface / Brand / Executive / Third Party / Utilities */
+.lower-nav-wrap{position:relative;display:grid;place-items:center}
+.lower-nav-wrap::after{content:"";position:absolute;left:38px;top:-14px;width:72px;height:84px;background:transparent;pointer-events:auto}
+.lower-flyout{display:none;position:fixed;left:102px;width:440px;max-height:calc(100vh - 24px);overflow-y:auto;overflow-x:hidden;background:#0f1727;border:1px solid #29364d;border-radius:20px;z-index:121;box-shadow:0 18px 48px #0009;overscroll-behavior:contain;scrollbar-width:thin}
+.lower-flyout::before{content:"";position:fixed;left:70px;top:0;width:42px;height:100vh;background:transparent}
+.lower-flyout h3{margin:0;padding:20px 24px;border-bottom:1px solid #243049;color:#eef3fb;font-size:20px;font-weight:500;white-space:nowrap}
+.lower-flyout button{display:flex;align-items:center;gap:10px;width:calc(100% - 20px);margin:5px 10px;padding:13px 20px;border:0;border-radius:14px;background:transparent;color:#a7afbd;text-align:left;font-size:17px;cursor:pointer;white-space:normal;line-height:1.35}
+.lower-flyout button:hover,.lower-flyout button.active{background:#1b355e;color:#58a4ff}
+.lower-flyout button em{display:inline-block;margin-left:4px;padding:3px 10px;border-radius:999px;background:#10472f;color:#2ce47b;font-style:normal;font-size:13px;font-weight:700}
+.lower-nav-wrap:hover .lower-flyout,.lower-flyout:hover,.lower-nav-wrap:has(.lower-flyout:hover) .lower-flyout{display:block!important}
+.lower-flyout::-webkit-scrollbar{width:8px}.lower-flyout::-webkit-scrollbar-thumb{background:#39445a;border-radius:999px}.lower-flyout::-webkit-scrollbar-track{background:transparent}
+.asm-flyout{top:clamp(12px,22vh,185px)}
+.brand-flyout{top:clamp(12px,30vh,250px)}
+.executive-flyout{top:clamp(12px,40vh,340px)}
+.thirdparty-flyout{top:clamp(12px,50vh,430px)}
+.utilities-flyout{top:auto;bottom:12px}
+@media(max-height:720px){.asm-flyout,.brand-flyout,.executive-flyout,.thirdparty-flyout{top:12px}.utilities-flyout{bottom:12px}}
