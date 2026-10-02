@@ -29,3 +29,8 @@ body:has(.alerts-management-page) #subpage>.subpage-head{display:none!important}
 .alerts-management-page>.am-breadcrumb{height:86px!important;box-sizing:border-box!important;padding:22px 0 20px 14px!important;font-size:16px!important;border:0!important;display:flex!important;align-items:center!important;gap:10px!important;color:#8992a2!important}
 .alerts-management-page>.am-breadcrumb b{color:#e2e5ea!important}.alerts-management-page>.am-breadcrumb>button{margin-left:auto!important;float:none!important;background:#15161b!important;border:1px solid #2d3038!important;border-radius:9px!important;color:#a3aab6!important;padding:10px 14px!important}
 .am-main{grid-template-rows:auto 1fr 58px!important}
+/* Tighten the gap between Alerts Services and the right data panel. */
+.am-main{padding-left:0!important}
+.am-toolbar,.am-table,.am-pager{margin-left:0!important}
+.am-toolbar{padding-left:20px!important}
+.am-table .am-headrow,.am-table .am-row{padding-left:20px!important}
