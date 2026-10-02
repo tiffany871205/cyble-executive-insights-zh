@@ -42,3 +42,10 @@ body:has(.alerts-management-page) #subpage>.subpage-head{display:none!important}
 .am-table{margin:0!important;padding-top:62px!important;border-left:0!important}
 .am-pager{margin:0!important;border-left:0!important}
 @media(max-width:1350px){.am-shell{grid-template-columns:300px minmax(0,1fr)!important}}
+/* Reference layout: right pane begins immediately at sidebar divider. */
+.am-shell{grid-template-columns:360px minmax(0,1fr)!important}
+.am-main{width:100%!important;min-width:0!important}
+.am-toolbar{width:100%!important;box-sizing:border-box!important;padding-left:26px!important;padding-right:20px!important}
+.am-table{width:100%!important;box-sizing:border-box!important}
+.am-headrow,.am-row{width:100%!important;box-sizing:border-box!important}
+@media(max-width:1350px){.am-shell{grid-template-columns:300px minmax(0,1fr)!important}}
