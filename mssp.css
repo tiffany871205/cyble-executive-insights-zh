@@ -7,3 +7,5 @@
 .mc-service-chart + .mc-legend{margin-top:18px;line-height:1.7;padding:0 20px}
 .mc-two .mc-legend{line-height:1.7;padding:0 20px}
 .mc-seat-chart + .mc-legend{margin-top:48px}
+
+.mc-alert-chart{height:290px!important;background:transparent!important;display:grid!important;grid-template-columns:60px 1fr!important;place-items:stretch!important;color:#8992a2!important;margin-top:55px}.mc-ylabels{display:flex;flex-direction:column;justify-content:space-between;text-align:right;padding-right:12px;border-right:1px solid #7b8492}.mc-bars{border-bottom:1px solid #7b8492;display:flex;align-items:flex-end;justify-content:space-around;background:repeating-linear-gradient(to bottom,transparent 0,transparent 66px,#292b31 67px)}.mc-bars i{width:36px;max-height:260px;background:#5b9fe9;border-radius:3px 3px 0 0;position:relative}.mc-bars i span{position:absolute;left:-6px;top:100%;margin-top:14px;width:115px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transform:rotate(-24deg);transform-origin:left top;color:#8992a2;font-style:normal;font-size:12px}
