@@ -8,6 +8,8 @@ const pageData={
 };
 const executive=document.querySelector('#executivePage'),sub=document.querySelector('#subpage');
 function openPage(key){document.querySelectorAll('.dash-menu a').forEach(a=>a.classList.toggle('active',a.dataset.page===key));if(key==='executive'){executive.hidden=false;sub.hidden=true;return}if(key==='alerts-management'||key==='darkweb'){executive.hidden=true;sub.hidden=false;return}const d=pageData[key];if(!d)return;executive.hidden=true;sub.hidden=false;if(key==='alerts'||key==='operational'||key==='advisories'||key==='newsflash'||key==='newsfeed'||key==='mssp'){return}sub.querySelector('h1').textContent=d[0];sub.querySelector('.subpage-head p').textContent=d[1];sub.querySelector('.subpage-grid').className='subpage-grid';sub.querySelector('.subpage-grid').innerHTML=d[2].map(x=>`<article class="subpage-card"><h3>${x[0]}</h3><strong>${x[1]}</strong><p>${x[2]}</p></article>`).join('')}
+
+function syncDarkwebFlyoutActive(page){document.querySelectorAll('.darkweb-flyout [data-darkpage]').forEach(b=>b.classList.toggle('active',b.dataset.darkpage===page));}
 function routeTo(page,tab,replace=true){
  const url=new URL(location.href); url.search=''; url.hash='';
  url.searchParams.set('page',page);
@@ -18,6 +20,7 @@ function routeTo(page,tab,replace=true){
  if(resolvedTab) url.searchParams.set('tab',resolvedTab);
  history[replace?'replaceState':'pushState']({page,tab:resolvedTab},'',url);
  openPage(page);
+ syncDarkwebFlyoutActive(page);
  window.dispatchEvent(new CustomEvent('cyble:route',{detail:{page,tab:resolvedTab}}));
 }
 document.querySelectorAll('.dash-menu a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();routeTo(a.dataset.page,null)}));
@@ -25,4 +28,5 @@ const initialParams=new URLSearchParams(location.search);
 const legacyHash=location.hash.slice(1);
 const initialPage=initialParams.get('page')||(pageData[legacyHash]||legacyHash==='executive'?legacyHash:'executive')||'executive';
 openPage(initialPage);
+syncDarkwebFlyoutActive(initialPage);
 if(!initialParams.get('page')) routeTo(initialPage,initialParams.get('tab'));
