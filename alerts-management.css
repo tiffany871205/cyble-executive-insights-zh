@@ -20,3 +20,11 @@ body:has(.alerts-management-page) #subpage>.subpage-head{display:none!important}
 
 /* Full Alerts Services catalog with its own scroll area. */
 .am-services{display:grid;grid-template-rows:auto minmax(0,1fr);padding:0!important;min-height:0;overflow:hidden}.am-services-head{padding:14px 16px 12px;border-bottom:1px solid #30323a;background:#1b1b20;z-index:2}.am-services-head h2{margin:0 0 12px}.am-services-head label{display:block;background:#111219;border-radius:9px;padding:11px 12px;color:#8992a2}.am-services-scroll{min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 16px 18px;scrollbar-width:thin;scrollbar-color:#77808f #1b1b20}.am-services-scroll h3{margin:0 -16px 0;padding:14px 16px;background:#202127;border-top:1px solid #292b32;color:#9099aa}.am-services-scroll h3:first-child{border-top:0}.am-services-scroll button{padding:12px 0}.am-services-scroll button.active{margin:0 -16px!important;padding:12px 16px!important;width:calc(100% + 32px)!important}.am-services-scroll::-webkit-scrollbar{width:10px}.am-services-scroll::-webkit-scrollbar-track{background:#1b1b20}.am-services-scroll::-webkit-scrollbar-thumb{background:#77808f;border-radius:10px}.am-services-scroll button{gap:8px;align-items:center}.am-services-scroll button b{flex:0 0 auto}
+
+/* Sidebar height follows the viewport; service list scrolls independently. */
+.am-shell{height:calc(100vh - 170px)!important;min-height:560px!important;max-height:calc(100vh - 170px)!important}
+.am-services{height:100%!important;min-height:0!important;overflow:hidden!important}
+.am-services-scroll{height:100%!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain!important}
+.am-main{height:100%!important;min-height:0!important;overflow:hidden!important}
+.am-table-wrap{min-height:0!important;overflow:hidden!important}
+@media(max-height:760px){.am-shell{height:calc(100vh - 150px)!important;min-height:480px!important;max-height:calc(100vh - 150px)!important}}
