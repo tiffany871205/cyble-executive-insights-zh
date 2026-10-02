@@ -6,3 +6,6 @@
 .tal-grid{align-items:start!important}
 .tal-card{align-self:start!important;height:auto!important}
 .tal-card:hover{min-height:500px}
+
+/* Masonry-like independent columns: expanding one card only shifts cards below it in the same column. */
+.tal-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;align-items:start!important}.tal-column{display:flex;flex-direction:column;gap:16px;min-width:0}.tal-card{width:100%;box-sizing:border-box;align-self:stretch!important}.tal-card:hover{min-height:500px}.tal-column .tal-card+ .tal-card{margin-top:0}@media(max-width:1200px){.tal-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.tal-column:nth-child(3){display:contents}}@media(max-width:760px){.tal-grid{grid-template-columns:1fr!important}.tal-column{display:flex!important}}
