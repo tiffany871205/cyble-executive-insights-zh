@@ -1,6 +1,6 @@
 
 .alerts-management-page{display:block!important;width:100%!important;max-width:none!important;margin:0!important}
-body:has(.alerts-management-page) main{margin-left:70px!important;padding:42px 26px 28px!important}
+body:has(.alerts-management-page)>main{margin-left:70px!important;padding:42px 26px 28px!important}
 body:has(.alerts-management-page) #subpage{padding:0!important}
 body:has(.alerts-management-page) #subpage>.subpage-head{display:none!important}
 .alerts-management-page>.am-breadcrumb{height:86px;box-sizing:border-box;padding:22px 0 20px 14px;display:flex;align-items:center;gap:10px;color:#8992a2;font-size:16px}
