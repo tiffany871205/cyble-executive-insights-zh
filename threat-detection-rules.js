@@ -1,0 +1,20 @@
+(()=>{const sub=document.querySelector('#subpage');if(!sub)return;
+const rules=[
+['PowerShell AppLocker Policy Discovery Via Get-AppLockerPolicy','SigmaHQ','SIGMA',['ATTACK.DISCOVERY','ATTACK.T1518.001'],'25-08-2026'],
+['RUSSIANPANDA_Shadowhvnc_Stealer','YARA Forge','YARA',['FILE'],'23-08-2026'],
+['RUSSIANPANDA_Shadowhvnc_Loader','YARA Forge','YARA',['FILE'],'23-08-2026'],
+['New User Account Creation Attempt Via ADSI in CommandLine','SigmaHQ','SIGMA',['ATTACK.PERSISTENCE','ATTACK.T1136.001','+1 more'],'25-08-2026'],
+['New User Account Creation Attempt Via ADSI','SigmaHQ','SIGMA',['ATTACK.PERSISTENCE','ATTACK.T1136.001','+1 more'],'25-08-2026'],
+['CAPE_Remus','kevoreilly · YARA Forge','YARA',['FILE'],'09-08-2026'],
+['ADCS - Certighost Ghost Machine Account Creation','SigmaHQ','SIGMA',['ATTACK.PRIVILEGE','ATTACK.CREDENTIAL','+5 more'],'25-08-2026'],
+['CAPE_Phantomstealer','kevoreilly · YARA Forge','YARA',['FILE'],'09-08-2026'],
+['Suspicious PowerShell Download Cradle','elastic','SIGMA',['ATTACK.EXECUTION','ATTACK.T1059.001'],'08-08-2026'],
+['Credential Dumping via LSASS Memory','SigmaHQ','SIGMA',['ATTACK.CREDENTIAL','ATTACK.T1003.001'],'06-08-2026'],
+['YARA_Demo_Ransomware_Family_A','cod3nym','YARA',['FILE'],'04-08-2026'],
+['YARA_Demo_Stealer_Family_B','RussianPanda95','YARA',['FILE'],'03-08-2026']
+];
+const refs=['elastic','YARA Forge','ditekshen','RussianPanda95','kevoreilly','cod3nym','SigmaHQ'];
+function menu(label,items){return `<div class="tdr-filter"><button class="tdr-filter-btn">${label}⌄</button><div class="tdr-menu"><label>⌕ <input placeholder="Search...（搜尋）"></label>${items.map(x=>`<button class="tdr-option">${x}</button>`).join('')}</div></div>`}
+function render(){const grid=sub.querySelector('.subpage-grid, .threat-detection-rules-page, .threat-lens-page');if(!grid)return;sub.querySelector('.subpage-head').innerHTML='';grid.className='subpage-grid threat-detection-rules-page';grid.innerHTML=`<div class="tdr-head"><h1>Threat Detection Rules（威脅偵測規則）</h1><div class="tdr-tools"><label>⌕ <input placeholder="Search rules...（搜尋規則）"></label><button>▣ Select Duration（選擇期間）⌄</button><button>☷</button><button>↻</button></div></div><div class="tdr-filters">${menu('Select Rule Type（選擇規則類型）',['YARA','SIGMA'])}${menu('Select References（選擇參考來源）',refs)}</div><section class="tdr-table-shell"><div class="tdr-table-wrap"><table><thead><tr><th>RULE NAME（規則名稱）</th><th>REFERENCES（參考來源）</th><th>RULE TYPE（規則類型）</th><th>TAGS（標籤）</th><th>DATE（日期） ↓</th><th>COPY RULE（複製規則）</th></tr></thead><tbody>${rules.map(r=>`<tr><td><strong>${r[0]}</strong></td><td>${r[1].replace(' · ','<br>')}</td><td>${r[2]}</td><td>${r[3].map((t,i)=>t.startsWith('+')?`<a class="tdr-more">${t.replace('more','more（更多）')}</a>`:`<b class="tdr-tag">${t}</b>`).join('')}</td><td>${r[4].replaceAll('-','-<br>').replace(/<br>$/,'')}</td><td><button class="tdr-copy" title="Copy rule（複製規則）">▣</button></td></tr>`).join('')}</tbody></table></div><footer><span>1 - 50 of 18,217 Record(s)（筆）</span><div><span>Items per page（每頁筆數）：</span><button>50⌄</button><button>‹ Previous（上一頁）</button><button>Next（下一頁） ›</button></div></footer></section>`;bind();}
+function bind(){const fs=[...document.querySelectorAll('.tdr-filter')];fs.forEach(f=>{const b=f.querySelector('.tdr-filter-btn'),m=f.querySelector('.tdr-menu'),inp=f.querySelector('input');b.addEventListener('click',e=>{e.stopPropagation();fs.forEach(o=>o!==f&&o.classList.remove('open'));f.classList.toggle('open')});inp.addEventListener('input',()=>{const q=inp.value.toLowerCase();m.querySelectorAll('.tdr-option').forEach(o=>o.hidden=!o.textContent.toLowerCase().includes(q))})});document.addEventListener('click',e=>{if(!e.target.closest('.tdr-filter'))fs.forEach(f=>f.classList.remove('open'))});document.querySelectorAll('.tdr-copy').forEach(btn=>btn.addEventListener('click',()=>{btn.textContent='✓';setTimeout(()=>btn.textContent='▣',900)}));}
+window.addEventListener('cyble:route',e=>{if(e.detail.page==='threat-detection-rules')render()});if(new URLSearchParams(location.search).get('page')==='threat-detection-rules')render();})();
