@@ -2,3 +2,6 @@
 .adv-list h3>small{display:block;margin-top:7px;color:#a4acba;font-size:13px;font-weight:400;letter-spacing:0;line-height:1.35}
 /* Match the other dashboard help controls: hover/focus, not click. */
 .adv-head>div:first-child:has(.adv-help:hover) .adv-help-pop,.adv-head>div:first-child:has(.adv-help:focus-visible) .adv-help-pop,.adv-help-pop:hover{display:block}
+/* Reliable hover tooltip: the popover is adjacent to the heading inside the same wrapper. */
+.adv-head>div:first-child{position:relative}
+.adv-head h1:has(.adv-help:hover)~.adv-help-pop,.adv-head h1:has(.adv-help:focus-visible)~.adv-help-pop,.adv-help-pop.show,.adv-help-pop:hover{display:block!important}
