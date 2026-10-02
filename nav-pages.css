@@ -36,3 +36,6 @@
 .darkweb-flyout{left:50px!important}
 .darkweb-flyout::before{content:"";position:absolute;left:-18px;top:0;width:18px;height:100%;background:transparent}
 .darkweb-nav-wrap:hover .darkweb-flyout,.darkweb-flyout:hover{display:block!important}
+
+/* Threat Intelligence flyout */
+.threat-nav-wrap{position:relative;display:grid;place-items:center}.threat-flyout{display:none;position:absolute;left:50px;top:-4px;width:440px;background:#0f1727;border:1px solid #29364d;border-radius:20px;overflow:hidden;z-index:120;box-shadow:0 18px 48px #0009}.threat-flyout::before{content:"";position:absolute;left:-18px;top:0;width:18px;height:100%;background:transparent}.threat-flyout h3{margin:0;padding:20px 24px;border-bottom:1px solid #243049;color:#eef3fb;font-size:20px;font-weight:500}.threat-flyout button{width:calc(100% - 20px);margin:5px 10px;padding:13px 20px;border:0;border-radius:14px;background:transparent;color:#a7afbd;text-align:left;font-size:17px;cursor:pointer;white-space:nowrap}.threat-flyout button:hover,.threat-flyout button.active{background:#1b355e;color:#58a4ff}.threat-nav-wrap:hover .threat-flyout,.threat-flyout:hover{display:block!important}

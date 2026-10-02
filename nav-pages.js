@@ -15,6 +15,8 @@ function syncPrimaryNavActive(page){
  const group=dashboardPages.has(page)?'dashboard':page==='alerts-management'?'alerts':page==='data-leaks'?'data-leaks':(['darkweb','cybercrime-monitoring','compromised-cards','compromised-files'].includes(page)?'darkweb':null);
  document.querySelectorAll('.rail-icons [data-nav-group]').forEach(b=>b.classList.toggle('on',!!group&&b.dataset.navGroup===group));
 }
+
+function syncThreatFlyoutActive(page){document.querySelectorAll('.threat-flyout [data-threatpage]').forEach(b=>b.classList.toggle('active',b.dataset.threatpage===page));}
 function syncDarkwebFlyoutActive(page){document.querySelectorAll('.darkweb-flyout [data-darkpage]').forEach(b=>b.classList.toggle('active',b.dataset.darkpage===page));}
 function routeTo(page,tab,replace=true){
  const url=new URL(location.href); url.search=''; url.hash='';
@@ -27,6 +29,7 @@ function routeTo(page,tab,replace=true){
  history[replace?'replaceState':'pushState']({page,tab:resolvedTab},'',url);
  openPage(page);
  syncPrimaryNavActive(page);
+ syncThreatFlyoutActive(page);
  syncDarkwebFlyoutActive(page);
  window.dispatchEvent(new CustomEvent('cyble:route',{detail:{page,tab:resolvedTab}}));
 }
@@ -36,5 +39,6 @@ const legacyHash=location.hash.slice(1);
 const initialPage=initialParams.get('page')||(pageData[legacyHash]||legacyHash==='executive'?legacyHash:'executive')||'executive';
 openPage(initialPage);
 syncPrimaryNavActive(initialPage);
+syncThreatFlyoutActive(initialPage);
 syncDarkwebFlyoutActive(initialPage);
 if(!initialParams.get('page')) routeTo(initialPage,initialParams.get('tab'));
