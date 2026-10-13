@@ -5,3 +5,7 @@
 .cc-add-grid main textarea{width:100%;min-height:150px;resize:vertical;background:#111119;border:1px solid #2b2d36;border-radius:10px;color:#d9dbe3;padding:14px;font:inherit;box-sizing:border-box}
 .cc-guide pre{white-space:pre-wrap;overflow:auto;background:#090a0f;border:1px solid #292b33;border-radius:9px;padding:0 14px 14px;line-height:1.45;color:#aeb3c1}
 .cc-guide pre b{display:block;margin:0 -14px 12px;padding:10px 14px;border-bottom:1px solid #292b33;color:#8e95a6;font-weight:500}
+
+.cc-guide pre{padding:0 24px 20px;font-family:inherit;font-size:15px;line-height:1.45}
+.cc-guide pre b{display:flex;align-items:center;justify-content:space-between;margin:0 -24px 18px;padding:11px 24px;font-family:inherit;font-size:14px;letter-spacing:.02em}
+.cc-guide pre b span{font-weight:400;letter-spacing:0;color:#9aa1b1}
