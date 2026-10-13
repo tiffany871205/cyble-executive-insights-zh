@@ -15,3 +15,10 @@
 @media(max-width:1000px){.em-finding-columns{grid-template-columns:1fr}.em-finding-columns aside{position:static}.em-action-steps{grid-template-columns:1fr 1fr}.em-evidence-meta{grid-template-columns:1fr 1fr}}
 .em-high-pill{background:#3a2028;color:#ff7189;border:1px solid #884052;border-radius:14px;padding:4px 10px;font-size:12px}.em-confirm-pill{background:#493611;color:#ffd344;border-radius:14px;padding:4px 10px;font-size:12px}.em-blue-pill{background:#172b50;color:#8ebcff;border-radius:14px;padding:4px 10px;font-size:12px}.em-score-raise{display:flex;align-items:center;gap:8px;margin-top:22px;padding:16px 20px;border:1px solid #19753c;border-radius:14px;background:#12301f;color:#49df7b}.em-score-raise span{margin-left:auto}.em-evidence-meta-3{grid-template-columns:repeat(3,1fr)}.em-action-steps em{color:#ffd344;font-style:normal;font-weight:700}tr[data-em-impersonation-finding]{cursor:pointer}tr[data-em-impersonation-finding]:hover{background:#191a22}
 .em-frow.em-clickable{cursor:pointer}.em-frow.em-clickable:hover{background:#171922}
+/* Finding detail header: keep Back button and breadcrumb on one row without wrapping. */
+.em-finding-detail .em-detail-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0}
+.em-finding-detail .em-detail-actions>div:first-child{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto;white-space:nowrap}
+.em-finding-detail .em-detail-actions .em-back{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:auto;min-width:max-content;white-space:nowrap;line-height:1.2;padding:11px 16px}
+.em-finding-detail .em-detail-actions .em-breadcrumb{margin:0;min-width:0;white-space:nowrap}
+.em-finding-detail .em-detail-actions .right{flex:0 0 auto;white-space:nowrap}
+@media(max-width:1100px){.em-finding-detail .em-detail-actions{overflow-x:auto;padding-bottom:4px}.em-finding-detail .em-detail-actions>div:first-child,.em-finding-detail .em-detail-actions .right{flex:none}}
