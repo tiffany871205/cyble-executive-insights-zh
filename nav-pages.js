@@ -45,3 +45,8 @@ syncThreatFlyoutActive(initialPage);
 syncDarkwebFlyoutActive(initialPage);
 syncAttackFlyoutActive(initialPage);
 if(!initialParams.get('page')) routeTo(initialPage,initialParams.get('tab'));
+
+window.addEventListener('cyble:route',e=>{if((e.detail?.page||new URLSearchParams(location.search).get('page'))==='malicious-domains') window.renderMaliciousDomains?.();});
+if(new URLSearchParams(location.search).get('page')==='malicious-domains') setTimeout(()=>window.renderMaliciousDomains?.(),0);
+
+window.addEventListener('cyble:route',e=>{const p=e.detail?.page||new URLSearchParams(location.search).get('page');if(p==='malicious-domains'){document.querySelectorAll('.nav-icon').forEach(x=>x.classList.remove('active'));document.querySelector('[data-nav-group="brand-intelligence"]')?.classList.add('active');}});
