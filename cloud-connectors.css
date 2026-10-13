@@ -18,3 +18,19 @@
   overflow-wrap:anywhere;
   word-break:break-word;
 }
+/* Keep the GCP service-account key field aligned like the reference form. */
+.cc-add-grid main label textarea{
+  display:block;
+  width:100%;
+  min-height:255px;
+  margin-top:9px;
+  padding:16px 15px;
+  box-sizing:border-box;
+  resize:vertical;
+  background:#171821;
+  border:1px solid #414651;
+  border-radius:9px;
+  color:#e3e6eb;
+  font:inherit;
+  letter-spacing:0;
+}
