@@ -16,6 +16,7 @@ function syncPrimaryNavActive(page){
  document.querySelectorAll('.rail-icons [data-nav-group]').forEach(b=>b.classList.toggle('on',!!group&&b.dataset.navGroup===group));
 }
 
+function syncBrandFlyoutActive(page){document.querySelectorAll('.brand-flyout [data-brandpage]').forEach(b=>b.classList.toggle('active',b.dataset.brandpage===page));}
 function syncAttackFlyoutActive(page){const target=page==='issue-detail'?'issue-catalog':page;document.querySelectorAll('.asm-flyout [data-attackpage]').forEach(b=>b.classList.toggle('active',b.dataset.attackpage===target));}
 function syncThreatFlyoutActive(page){document.querySelectorAll('.threat-flyout [data-threatpage]').forEach(b=>b.classList.toggle('active',b.dataset.threatpage===page));}
 function syncDarkwebFlyoutActive(page){document.querySelectorAll('.darkweb-flyout [data-darkpage]').forEach(b=>b.classList.toggle('active',b.dataset.darkpage===page));}
@@ -33,6 +34,7 @@ function routeTo(page,tab,replace=true){
  syncThreatFlyoutActive(page);
  syncDarkwebFlyoutActive(page);
  syncAttackFlyoutActive(page);
+ syncBrandFlyoutActive(page);
  window.dispatchEvent(new CustomEvent('cyble:route',{detail:{page,tab:resolvedTab}}));
 }
 document.querySelectorAll('.dash-menu a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();routeTo(a.dataset.page,null)}));
@@ -44,6 +46,7 @@ syncPrimaryNavActive(initialPage);
 syncThreatFlyoutActive(initialPage);
 syncDarkwebFlyoutActive(initialPage);
 syncAttackFlyoutActive(initialPage);
+syncBrandFlyoutActive(initialPage);
 if(!initialParams.get('page')) routeTo(initialPage,initialParams.get('tab'));
 
 window.addEventListener('cyble:route',e=>{if((e.detail?.page||new URLSearchParams(location.search).get('page'))==='malicious-domains') window.renderMaliciousDomains?.();});
