@@ -37,3 +37,4 @@
 .em-profile-toolbar>div:first-child,.em-finding-detail .em-detail-actions>div:first-child{white-space:normal;flex-wrap:wrap}
 @media(max-width:1250px){.em-profile-toolbar{overflow-x:hidden!important;align-items:flex-start;flex-wrap:wrap}.em-profile-toolbar>div:first-child,.em-profile-toolbar .right{flex:1 1 auto}}
 @media(max-width:1100px){.em-finding-detail .em-detail-actions{overflow-x:hidden!important;align-items:flex-start;flex-wrap:wrap}.em-finding-detail .em-detail-actions>div:first-child,.em-finding-detail .em-detail-actions .right{flex:1 1 auto}}
+.em-sentence-zh{display:block;margin-top:7px;color:#7f899c;font-size:13px;font-weight:400;letter-spacing:.02em;text-transform:none}
