@@ -1,0 +1,17 @@
+(function(){
+  var sub=document.getElementById('subpage');
+  function render(){
+    document.querySelector('#executivePage').hidden=true; sub.hidden=false; sub.querySelector('.subpage-head').innerHTML='';
+    var g=sub.querySelector('.subpage-grid'); if(!g)return; g.className='subpage-grid odas-page';
+    g.innerHTML=`<header class="odas-head"><div><div class="odas-title"><h1>On-Demand Application Scan（隨選應用程式掃描）</h1><span class="odas-help">?</span><div class="odas-tip">Schedule and monitor application security scans across your portfolio.（排程並監控整個應用程式組合的安全掃描。）<a href="#">↗ Visit Help Center（造訪說明中心）</a></div></div><p>Schedule and monitor application security scans across your portfolio.（排程並監控整個應用程式組合的安全掃描。）</p></div></header><h3 class="odas-label">OVERVIEW（總覽）</h3><section class="odas-kpis"><article><span>TOTAL ISSUES（問題總數）</span><b>0</b></article><article><span>HIGH（高）</span><b class="high">0</b></article><article><span>MEDIUM（中）</span><b class="medium">0</b></article><article><span>LOW（低）</span><b class="low">0</b></article></section><div class="odas-app-head"><h3>APPLICATIONS（應用程式）</h3><div class="odas-tools"><label>⌕ <input placeholder="Search applications...（搜尋應用程式）"></label><div class="odas-status"><button>Status（狀態）⌄</button><div class="odas-status-drop"><input placeholder="Search...（搜尋）"><span>Under Review（審查中）</span><span>Approved（已核准）</span><span>Scheduled（已排程）</span><span>Rejected（已拒絕）</span><span>Stopped（已停止）</span></div></div><button class="odas-refresh">↻</button><button class="odas-add">＋ Add Application（新增應用程式）</button></div></div><section class="odas-empty">No applications added yet.（尚未新增應用程式。）</section><div class="odas-modal" hidden><div class="odas-dialog"><button class="odas-close">×</button><h2>Add Application（新增應用程式）</h2><label>APPLICATION NAME（應用程式名稱）<em>*</em><input class="odas-name" maxlength="50" placeholder="Enter your application name (50 characters maximum)（輸入應用程式名稱，最多 50 字元）"><small><b class="odas-count">0</b> / 50</small></label><label>URL<em>*</em><input placeholder="Enter Application URL（輸入應用程式 URL）"></label><label>SCAN FREQUENCY（掃描頻率）<em>*</em><select><option>Select Frequency（選擇頻率）</option><option>Daily（每日）</option><option>Weekly（每週）</option><option>Monthly（每月）</option></select></label><label class="odas-ack"><input type="checkbox"> <span>I acknowledge that this entry may be used by <b>Cyble</b> for internal operations.（我確認此項目可能供 Cyble 內部作業使用。）</span></label><footer><button class="odas-cancel">Cancel（取消）</button><button class="odas-submit">Add Application（新增應用程式）</button></footer></div></div>`;
+    var st=g.querySelector('.odas-status'),modal=g.querySelector('.odas-modal');
+    st.querySelector('button').onclick=function(e){e.stopPropagation();st.classList.toggle('open')};
+    g.querySelector('.odas-add').onclick=function(){modal.hidden=false};
+    g.querySelector('.odas-close').onclick=g.querySelector('.odas-cancel').onclick=function(){modal.hidden=true};
+    modal.onclick=function(e){if(e.target===modal)modal.hidden=true};
+    g.querySelector('.odas-name').oninput=function(){g.querySelector('.odas-count').textContent=this.value.length};
+    document.addEventListener('click',function(e){if(!st.contains(e.target))st.classList.remove('open')},{once:true});
+  }
+  window.addEventListener('cyble:route',function(e){if(e.detail.page==='on-demand-scan')render()});
+  if(new URLSearchParams(location.search).get('page')==='on-demand-scan')render();
+})();
