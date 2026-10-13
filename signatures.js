@@ -1,0 +1,35 @@
+(function(){
+  var sub=document.querySelector('#subpage'); if(!sub)return;
+  var rows=[
+    ['Kibana Timelion Is Vulnerable To Arbitrary Code Execution','Kibana versions prior to 5.6.15 and 6.6.1 contain a server side code execution flaw in the Timelion visualization plugin and API.','CVE-2019-7609','CWE-94','elastic','kibana','CVSS V3','10.0','EPSS','95.3%','CRITICAL','13 Nov 2023',['KEV','WEB APP']],
+    ['Microsoft SMBv3 Remote Code Execution','A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3.1.1 (SMBv3) protocol handles certain requests.','CVE-2020-0796','CWE-119','microsoft','windows_10_1903','CVSS V3','10.0','EPSS','99.8%','CRITICAL','25 May 2026',['KEV','WEB APP']],
+    ['Enfold < 3.0.1 is vulnerable to Unspecified Vulnerability','Unspecified vulnerability in the folder framework in the Enfold theme before 3.0.1 for WordPress has unknown impact and attack vectors.','CVE-2014-7297','NVD-CWE-noinfo','kriesi','enfold','CVSS V2','10.0','EPSS','2.1%','CRITICAL','10 Jul 2025',['WEB APP']]
+  ];
+  function dd(label,type,items){
+    if(type==='range')return '<div class="sig-filter range"><button class="sig-filter-btn">'+label+'⌄</button><div class="sig-drop sig-range"><div><label>MIN<input type="number" value="0"></label><label>MAX<input type="number" value="'+(label.indexOf('EPSS')>=0?'100':'10')+'"></label></div><strong>'+ (label.indexOf('EPSS')>=0?'0 – 100':'0 – 10') +'</strong><div class="sig-slider"><i></i><b></b><em></em></div><footer><span>'+ (label.indexOf('EPSS')>=0?'0%':'0') +'</span><span>'+ (label.indexOf('EPSS')>=0?'100%':'10') +'</span></footer></div></div>';
+    if(type==='selecttype')return '<div class="sig-filter"><button class="sig-filter-btn">'+label+'⌄</button><div class="sig-drop sig-type">'+items.map(function(x,i){return '<button class="'+(i===0?'active':'')+'">'+x+(i===0?' ✓':'')+'</button>'}).join('')+'</div></div>';
+    return '<div class="sig-filter"><button class="sig-filter-btn">'+label+'⌄</button><div class="sig-drop"><input placeholder="Search...（搜尋）">'+items.map(function(x){return '<label><input type="checkbox"> '+x+'</label>'}).join('')+'</div></div>';
+  }
+  function render(){
+    document.querySelector('#executivePage').hidden=true; sub.hidden=false;
+    var grid=sub.querySelector('.subpage-grid, .signatures-page, .ssl-tls-page, .issue-catalog-page'); if(!grid)return;
+    sub.querySelector('.subpage-head').innerHTML='';
+    grid.className='subpage-grid signatures-page';
+    grid.innerHTML='<header class="sig-head"><div><h1>Signatures（簽章）</h1><p>Catalog of vulnerability signatures discovered across your external attack surface.（外部攻擊面中偵測到的弱點簽章目錄。）</p></div><div class="sig-head-tools"><label>⌕ <input placeholder="Search signatures...（搜尋簽章）"></label><button>▣ Select Duration（選擇期間）⌄</button><button>☷</button><button>↻</button></div></header>'+ 
+    '<section class="sig-filterbar">'+
+      dd('Severity（嚴重度）','checks',['Critical（重大）','High（高）','Medium（中）','Low（低）','Info（資訊）'])+
+      dd('Source（來源）','checks',['Web App（Web 應用程式）','SSL/TLS','DNS','Open Port（開放連接埠）','Cloud（雲端）'])+
+      '<div class="sig-filter sig-cve"><button class="sig-filter-btn">CVE ID⌄</button><div class="sig-drop sig-type"><button class="active">CVE ID ✓</button><button>Vendor（廠商）</button><button>Product（產品）</button><button>CPE</button></div></div><input class="sig-cve-input" placeholder="e.g. CVE-2023-20198">'+
+      dd('CVSS Score（CVSS 分數）','range',[])+dd('EPSS Score（EPSS 分數）','range',[])+
+      dd('CISA KEV','checks',['Yes（是）','No（否）'])+dd('Zero Day（零日）','checks',['Yes（是）','No（否）'])+
+    '</section>'+ 
+    '<section class="sig-kpis"><article><i>⬡</i><div><small>TOTAL SIGNATURES（簽章總數）</small><b>9,434</b><span>Matching current filters（符合目前篩選條件）</span></div></article><article><i class="crit">△</i><div><small>CRITICAL（重大）</small><b>2,098 <em>22.2%</em></b><span>CVSS 9.0 - 10.0</span></div></article><article><i class="kev">ϟ</i><div><small>CISA KEV</small><b>556 <em>5.9%</em></b><span>Known exploited（已知遭利用）</span></div></article><article><i class="zero">◷</i><div><small>ZERO-DAY（零日）</small><b>53 <em>0.6%</em></b><span>No official patch yet（尚無官方修補）</span></div></article></section>'+ 
+    '<section class="sig-table-shell"><div class="sig-table-wrap"><table><thead><tr><th>SIGNATURE（簽章）⌄</th><th>CVE / CWE</th><th>VENDOR / PRODUCT（廠商／產品）</th><th>RISK PROFILE（風險概況）</th><th>SEVERITY（嚴重度）⌄</th><th>CREATED ON（建立日期）⌄</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td><b>'+r[0]+'</b><p>'+r[1]+'</p><div>'+r[12].map(function(t){return '<span class="sig-tag '+(t==='KEV'?'kevtag':'')+'">'+t+'</span>'}).join('')+'</div></td><td><a>'+r[2]+'</a><small>'+r[3]+'</small></td><td><b>'+r[4]+'</b><small>'+r[5]+'</small></td><td><div class="risk"><span>'+r[6]+'</span><i><b style="width:100%"></b></i><em>'+r[7]+'</em></div><div class="risk"><span>'+r[8]+'</span><i><b class="epss" style="width:'+r[9]+'"></b></i><em>'+r[9]+'</em></div></td><td><span class="sig-critical">'+r[10]+'（重大）</span></td><td>'+r[11]+'</td></tr>'}).join('')+'</tbody></table></div><footer><span>Showing（顯示） <b>1-20</b> of（共） <b>9,434</b></span><span>‹‹　‹　 Go to（前往） <b class="sig-page">1</b> of 472　›　››</span><span>Rows per page（每頁列數） <b class="sig-page">20⌄</b></span></footer></section>';
+    var filters=[].slice.call(grid.querySelectorAll('.sig-filter'));
+    filters.forEach(function(f){var b=f.querySelector('.sig-filter-btn'); if(!b)return;b.onclick=function(e){e.stopPropagation();filters.forEach(function(o){if(o!==f)o.classList.remove('open')});f.classList.toggle('open')}});
+    grid.querySelectorAll('.sig-drop').forEach(function(d){d.onclick=function(e){e.stopPropagation()}});
+  }
+  document.addEventListener('click',function(){document.querySelectorAll('.sig-filter.open').forEach(function(f){f.classList.remove('open')})});
+  window.addEventListener('cyble:route',function(e){if(e.detail.page==='signatures')render()});
+  if(new URLSearchParams(location.search).get('page')==='signatures')render();
+})();
