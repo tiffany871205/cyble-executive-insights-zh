@@ -9,6 +9,7 @@
     ['dns1.evtek-demo.example','25',[0,0,0,0,0],'T','07 Oct 2026']
   ];
   function render(){
+    document.querySelector('#executivePage').hidden=true; sub.hidden=false;
     var grid=sub.querySelector('.subpage-grid, .ssl-tls-page, .issue-catalog-page, .asset-inventory-page'); if(!grid)return;
     sub.querySelector('.subpage-head').innerHTML='';
     grid.className='subpage-grid ssl-tls-page';

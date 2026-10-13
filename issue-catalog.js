@@ -22,6 +22,7 @@
     ['LOW','Server Information Disclosure Header Present','192.0.2.55','80','http://192.0.2.55','08 Dec 2025','06 Oct 2026']
   ];
   function render(){
+    document.querySelector('#executivePage').hidden=true; sub.hidden=false;
     var grid=sub.querySelector('.subpage-grid, .issue-catalog-page, .asset-inventory-page, .attack-surface-dashboard-page'); if(!grid)return;
     sub.querySelector('.subpage-head').innerHTML='';
     grid.className='subpage-grid issue-catalog-page';
@@ -31,6 +32,7 @@
   }
 
   function renderDetail(index){
+    document.querySelector('#executivePage').hidden=true; sub.hidden=false;
     var r=rows[index]||rows[0];
     var grid=sub.querySelector('.subpage-grid, .issue-catalog-page, .issue-detail-page, .asset-inventory-page'); if(!grid)return;
     sub.querySelector('.subpage-head').innerHTML='';

@@ -31,6 +31,7 @@
     return '<div class="ai-filter"><button class="ai-filter-btn">'+name+'⌄</button><div class="ai-drop"><input placeholder="Search...（搜尋）"><label><input type="checkbox"> All（全部）</label><label><input type="checkbox"> Active（啟用）</label><label><input type="checkbox"> Inactive（停用）</label></div></div>';
   }
   function render(tab){
+    document.querySelector('#executivePage').hidden=true; sub.hidden=false;
     var d=data[tab]||data.domains;
     var grid=sub.querySelector('.subpage-grid, .attack-surface-dashboard-page, .asset-inventory-page'); if(!grid)return;
     sub.querySelector('.subpage-head').innerHTML='';
