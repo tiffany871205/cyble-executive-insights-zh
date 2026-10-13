@@ -1,10 +1,10 @@
 (()=>{
-const demoName='蔡宏圖';
+const demoName='林致遠';
 const findings=[
- ['蔡宏圖 — impersonating page on Facebook','facebook','Social Impersonations','HIGH','CONFIRMED'],
- ['Mention by 廖倩敏 on Facebook','facebook','Social Mentions','HIGH','VIEWED'],
- ['Mention by 賴鳳英 on Facebook','facebook','Social Mentions','HIGH','UNREVIEWED'],
- ['Mention by 王尤美 on Facebook','facebook','Social Mentions','HIGH','VIEWED'],
+ ['林致遠 — impersonating page on Facebook','facebook','Social Impersonations','HIGH','CONFIRMED'],
+ ['Mention by 陳語晴 on Facebook','facebook','Social Mentions','HIGH','VIEWED'],
+ ['Mention by 周若庭 on Facebook','facebook','Social Mentions','HIGH','UNREVIEWED'],
+ ['Mention by 許安琪 on Facebook','facebook','Social Mentions','HIGH','VIEWED'],
  ['Mention by Technews 科技新報 on Facebook','facebook','Social Mentions','HIGH','UNREVIEWED'],
  ['Mention by 2025 台大電機週 on Instagram','instagram','Social Mentions','HIGH','UNREVIEWED']
 ];
@@ -32,7 +32,7 @@ function overview(){
  </div>
  <section class="em-section"><div class="em-section-head"><span>WHO CARRIES THE RISK（風險集中對象）　<em>Sized by open findings; ring shows the health band</em></span><a data-em-executives>All executives →</a></div><div class="em-person"><span>蔡</span><p>+0 with nothing open</p></div><p>${demoName} 19 — these three hold 100% of everything open</p></section>
  <section class="em-section"><div class="em-section-head"><span>WHERE THE 19 OPEN FINDINGS SIT（19 項未結案發現分布）　<em>Open findings by category · widths clamped for legibility</em></span></div><div class="em-category"><div><b>MENTIONS（提及）</b><strong>18 <small>open</small></strong></div><div><b>IMPERSONATIONS（冒用）</b><strong>1 <small>open</small></strong></div></div></section>
- <section class="em-section"><div class="em-section-head"><span>HOW LONG IT HAS BEEN OPEN（未結案時間）　<em>Oldest still open: ${demoName} · Mention by 國泰金控 on Vimeo · 221 days</em></span><a>Oldest first →</a></div><div class="em-age"><div><b>6</b> Under 7 days</div><div><b>13</b> Over 14 days</div></div></section>
+ <section class="em-section"><div class="em-section-head"><span>HOW LONG IT HAS BEEN OPEN（未結案時間）　<em>Oldest still open: ${demoName} · Mention by 星澤金融 on Vimeo · 221 days</em></span><a>Oldest first →</a></div><div class="em-age"><div><b>6</b> Under 7 days</div><div><b>13</b> Over 14 days</div></div></section>
  <section class="em-bottom"><div><div class="em-section-head"><span>WHAT CHANGED（近期變化） — 1 score movements in　<button>Last 7 days⌄</button></span></div><p>週四　↓　<strong>${demoName}’s health fell to 93%</strong><br><small>−1 pt · 94% → 93% · Chairman</small></p><p>0 executives held steady</p></div><div><label>NEEDS ATTENTION（需要關注）</label><p>Nothing needs attention right now（目前沒有需要關注的項目）</p><b class="green">HEALTHY</b></div></section>`, 'overview');
  document.querySelector('[data-em-findings]')?.addEventListener('click',()=>routeTo('executive-monitoring','findings',false));
  document.querySelector('[data-em-executives]')?.addEventListener('click',()=>routeTo('executive-monitoring','executives',false));
