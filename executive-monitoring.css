@@ -38,3 +38,24 @@
 @media(max-width:1250px){.em-profile-toolbar{overflow-x:hidden!important;align-items:flex-start;flex-wrap:wrap}.em-profile-toolbar>div:first-child,.em-profile-toolbar .right{flex:1 1 auto}}
 @media(max-width:1100px){.em-finding-detail .em-detail-actions{overflow-x:hidden!important;align-items:flex-start;flex-wrap:wrap}.em-finding-detail .em-detail-actions>div:first-child,.em-finding-detail .em-detail-actions .right{flex:1 1 auto}}
 .em-sentence-zh{display:block;margin-top:7px;color:#7f899c;font-size:13px;font-weight:400;letter-spacing:.02em;text-transform:none}
+/* Add executive: normalize native form controls so they match the dark Cyble UI. */
+.em-add-page .em-contact-line input,
+.em-add-page .em-contact-line select{
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  height:46px;
+  padding:0 14px;
+  border:1px solid #30323d;
+  border-radius:8px;
+  background:#111119;
+  color:#d8dbe2;
+  font:inherit;
+  outline:none;
+  color-scheme:dark;
+}
+.em-add-page .em-contact-line input::placeholder{color:#747d8d;opacity:1}
+.em-add-page .em-contact-line input:focus,
+.em-add-page .em-contact-line select:focus{border-color:#3b82e6;box-shadow:0 0 0 1px #3b82e6}
+.em-add-page .em-contact-line select{appearance:auto}
+.em-add-page .em-contact-line .em-alias{box-sizing:border-box;min-height:38px;display:flex;align-items:center;justify-content:center;white-space:nowrap}
