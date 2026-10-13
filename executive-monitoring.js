@@ -38,20 +38,20 @@ function overview(){
  document.querySelector('[data-em-executives]')?.addEventListener('click',()=>routeTo('executive-monitoring','executives',false));
  document.querySelectorAll('.em-primary').forEach(b=>{if(b.textContent.includes('Add executive'))b.addEventListener('click',()=>routeTo('executive-monitoring','add-executive',false))});
 }
-function filterMenu(key,label,items,active=false,type='check'){return `<div class="em-filter-wrap"><button class="em-filter-trigger${active?' active':''}" data-filter="${key}">${label}　⌄</button><div class="em-filter-menu ${type==='time'?'em-time-menu':''}" data-menu="${key}"><input placeholder="Search...">${items.map((x,i)=>type==='time'?`<button class="em-time-option">${x[0]}</button>`:type==='radio'?`<button class="em-radio-option${i===0?' selected':''}"><span>${x[0]}</span><em>${x[1]}</em>${i===0?'<b>✓</b>':''}</button>`:`<label><input type="checkbox"><span>${x[0]}</span><em>${x[1]}</em></label>`).join('')}</div></div>`}
+function filterMenu(key,label,items,active=false,type='check'){return `<div class="em-filter-wrap"><button class="em-filter-trigger${active?' active':''}" data-filter="${key}">${label}　⌄</button><div class="em-filter-menu ${type==='time'?'em-time-menu':''}" data-menu="${key}"><input placeholder="Search...（搜尋…）">${items.map((x,i)=>type==='time'?`<button class="em-time-option">${x[0]}</button>`:type==='radio'?`<button class="em-radio-option${i===0?' selected':''}"><span>${x[0]}</span><em>${x[1]}</em>${i===0?'<b>✓</b>':''}</button>`:`<label><input type="checkbox"><span>${x[0]}</span><em>${x[1]}</em></label>`).join('')}</div></div>`}
 function bindFindingFilters(){const wraps=[...document.querySelectorAll('.em-filter-wrap')];wraps.forEach(w=>w.querySelector('.em-filter-trigger')?.addEventListener('click',e=>{e.stopPropagation();const was=w.classList.contains('open');wraps.forEach(x=>x.classList.remove('open'));if(!was)w.classList.add('open')}));document.querySelectorAll('.em-filter-menu').forEach(m=>m.addEventListener('click',e=>e.stopPropagation()));document.addEventListener('click',()=>wraps.forEach(w=>w.classList.remove('open')),{once:true});}
 function findingsPage(){
  const rows=findings.map((f,i)=>`<div class="em-frow${i===0?' em-clickable':''}" ${i===0?'data-em-impersonation-finding':''}><div><span class="em-avatar">林致</span><b>${demoName}</b><small>Seen ${i?`${4+i}mo`:'1mo'} ago</small></div><div><b>${f[0]}</b><small>${demoName} · ${f[1]}　<span>☻ Neutral</span>${i?'　<span>Resolve 2 more</span>':'　<span class="health">↗ Health +1%</span>'}</small></div><div>${f[2]}</div><div><b class="sev">• ${f[3]}</b></div><div><b class="status ${f[4].toLowerCase()}">${f[4]}</b></div><div>⋮</div></div>`).join('');
  shell(`<div class="em-breadcrumb">EXECUTIVE MONITORING　›　FINDINGS · ALL</div><div class="em-findtop"><div><h1>Findings（發現項目） <small>12 open in view · 0 in last 30 days</small></h1></div><div><button>⇅ Sort（排序）</button><button>⇩ Export（匯出）</button></div></div><hr>
  <div class="em-filters"><input placeholder="⌕  Search title, executive, source...（搜尋標題、高階主管、來源…）">
- ${filterMenu('executive','Executive',[['林致遠','19']])}
- ${filterMenu('severity','Severity',[['HIGH','12'],['MEDIUM','7']],true)}
- ${filterMenu('sentiment','Sentiment',[['Negative','1'],['Neutral','17'],['Positive','0']])}
- ${filterMenu('status','Status',[['Unreviewed','10'],['Viewed','8'],['Confirmed','1']])}
- ${filterMenu('resolution','Resolution: Unresolved',[['Unresolved','19'],['Resolved','0'],['All','19']],true,'radio')}
- ${filterMenu('category','Category',[['Mentions','18'],['Impersonations','1']])}
- ${filterMenu('lane','Lane',[['Social Mentions','18'],['Social Impersonations','1']])}
- ${filterMenu('time','▣ All time',[['Today',''],['Yesterday',''],['This Week',''],['Last Week',''],['This Month',''],['Last Month',''],['Last 24 Hours',''],['Last 7 Days',''],['Last 30 Days',''],['Last 3 Months',''],['Last 6 Months',''],['Current Year',''],['Previous Year',''],['Custom ›','']],true,'time')}
+ ${filterMenu('executive','Executive（高階主管）',[['林致遠','19']])}
+ ${filterMenu('severity','Severity（嚴重程度）',[['HIGH（高）','12'],['MEDIUM（中）','7']],true)}
+ ${filterMenu('sentiment','Sentiment（情緒）',[['Negative（負面）','1'],['Neutral（中立）','17'],['Positive（正面）','0']])}
+ ${filterMenu('status','Status（狀態）',[['Unreviewed（未審閱）','10'],['Viewed（已查看）','8'],['Confirmed（已確認）','1']])}
+ ${filterMenu('resolution','Resolution（處理狀態）: Unresolved（未解決）',[['Unresolved（未解決）','19'],['Resolved（已解決）','0'],['All（全部）','19']],true,'radio')}
+ ${filterMenu('category','Category（類別）',[['Mentions（提及）','18'],['Impersonations（冒用）','1']])}
+ ${filterMenu('lane','Lane（監控類別）',[['Social Mentions（社群提及）','18'],['Social Impersonations（社群冒用）','1']])}
+ ${filterMenu('time','▣ All time（所有時間）',[['Today（今天）',''],['Yesterday（昨天）',''],['This Week（本週）',''],['Last Week（上週）',''],['This Month（本月）',''],['Last Month（上個月）',''],['Last 24 Hours（過去 24 小時）',''],['Last 7 Days（過去 7 天）',''],['Last 30 Days（過去 30 天）',''],['Last 3 Months（過去 3 個月）',''],['Last 6 Months（過去 6 個月）',''],['Current Year（今年）',''],['Previous Year（去年）',''],['Custom（自訂） ›','']],true,'time')}
  <button>↻</button></div>
  <div class="em-active"><b>ACTIVE</b>　<span>Severity: CRITICAL　×</span> <span>Severity: HIGH　×</span>　Clear all</div>
  <div class="em-ftable"><div class="em-fhead"><b>EXECUTIVE</b><b>FINDING</b><b>LANE</b><b>SEVERITY</b><b>STATUS</b><b></b></div>${rows}<footer><span>Showing <b>1-12</b> of 12</span><span>‹　‹　 Go to　<b>1</b>　of 1　›　›</span><span>Rows per page　<b>20⌄</b></span></footer></div>`, 'findings');bindFindingFilters();document.querySelector('[data-em-impersonation-finding]')?.addEventListener('click',()=>routeTo('executive-monitoring','impersonation-finding',false));
