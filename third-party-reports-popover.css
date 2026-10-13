@@ -18,5 +18,5 @@
 .tpr-help-drawer:before{left:18px}
 .tpr-help-drawer header,.tpr-help-drawer h3,.tpr-help-drawer section{display:none!important}
 .tpr-help-drawer>p{margin:0!important;font-size:0!important;line-height:1.55!important}
-.tpr-help-drawer>p:after{content:'View and manage third-party vendor risk assessment reports.';display:block;color:#aeb4c2;font-size:16px;line-height:1.55}
+.tpr-help-drawer>p:after{content:'檢視並管理第三方供應商風險評估報告。';display:block;color:#aeb4c2;font-size:16px;line-height:1.55}
 @media(max-width:720px){.tpr-help-backdrop{top:45px;left:72px;width:min(365px,calc(100% - 84px))}.tpr-help-drawer{width:100%}}
