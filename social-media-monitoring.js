@@ -1,6 +1,6 @@
 (()=>{
 const sources=[['Facebook',146],['Youtube',94],['Linkedin',31],['Instagram',21],['Tiktok',9],['Twitter',7],['RSS',3],['Reddit',1]];
-const keywords=[['星河銀行',46,'◉ 12　◎ 2　in 23　◉ 3　𝕏 4　▶ 2'],['晨曦銀行',19,'▶ 19'],['海岳銀行',16,'◉ 2　◎ 1　▶ 13'],['遠景銀行',11,'◉ 8　▶ 3'],['青禾銀行',10,'◉ 5　𝕏 2　▶ 3'],['玉山銀行',7,'◉ 7']];
+const keywords=[['星河銀行',46,'◉ 12　◎ 2　in 23　◉ 3　𝕏 4　▶ 2'],['晨曦銀行',19,'▶ 19'],['海岳銀行',16,'◉ 2　◎ 1　▶ 13'],['遠景銀行',11,'◉ 8　▶ 3'],['青禾銀行',10,'◉ 5　𝕏 2　▶ 3'],['雲川銀行',7,'◉ 7']];
 const alerts=[
  ['LOW（低）','Twitter','星河銀行','13-Oct-2026 14:01','A monitored brand mention was detected in a public social post. The content references a financial service announcement and has been queued for analyst review.','Demo Social'],
  ['HIGH（高）','Youtube','晨曦銀行','13-Oct-2026 13:53','A video mentioning the monitored brand was identified. Automated analysis marked the content as high priority for manual validation.','Demo Channel'],
