@@ -2,3 +2,7 @@
 
 /* Keep bilingual tab labels on one line */
 .smm-tabs button,.smm-tab{white-space:nowrap!important;word-break:keep-all!important;overflow-wrap:normal!important;min-width:max-content!important}
+
+/* Bilingual Overview / Alerts tabs */
+.social-media-page .sm-tabs{display:flex!important;align-items:flex-end!important;gap:20px!important;width:max-content!important}
+.social-media-page .sm-tabs button{display:block!important;width:auto!important;min-width:max-content!important;max-width:none!important;white-space:nowrap!important;word-break:keep-all!important;overflow-wrap:normal!important;flex:0 0 auto!important;padding-left:18px!important;padding-right:18px!important}
