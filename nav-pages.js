@@ -7,15 +7,16 @@ const pageData={
  mssp:['MSSP 洞察','以託管安全服務視角查看客戶與風險概況。',[['受管組織','24','目前納管組織'],['A 級','20','低曝險組織'],['B 級','4','中度曝險組織']]]
 };
 const executive=document.querySelector('#executivePage'),sub=document.querySelector('#subpage');
-function openPage(key){document.querySelectorAll('.dash-menu a').forEach(a=>a.classList.toggle('active',a.dataset.page===key));if(key==='executive'){executive.hidden=false;sub.hidden=true;return}if(['alerts-management','darkweb','cybercrime-monitoring','compromised-cards','compromised-files','data-leaks','threat-actor-library','malware-families','ioc-lookup','sensor-intelligence','botshield','ransomware-extortion','threat-lens','threat-detection-rules','hacktivism','attack-surface-dashboard','asset-inventory','issue-catalog','issue-detail','ssl-tls','signatures','signature-detail','on-demand-scan','cloud-connectors','malicious-domains','social-media-monitoring','watchlisted-domains','website-monitoring','website-watermarking','takedown-tracker','mobile-application-monitoring'].includes(key)){executive.hidden=true;sub.hidden=false;return}const d=pageData[key];if(!d)return;executive.hidden=true;sub.hidden=false;if(key==='alerts'||key==='operational'||key==='advisories'||key==='newsflash'||key==='newsfeed'||key==='mssp'){return}sub.querySelector('h1').textContent=d[0];sub.querySelector('.subpage-head p').textContent=d[1];sub.querySelector('.subpage-grid').className='subpage-grid';sub.querySelector('.subpage-grid').innerHTML=d[2].map(x=>`<article class="subpage-card"><h3>${x[0]}</h3><strong>${x[1]}</strong><p>${x[2]}</p></article>`).join('')}
+function openPage(key){document.querySelectorAll('.dash-menu a').forEach(a=>a.classList.toggle('active',a.dataset.page===key));if(key==='executive'){executive.hidden=false;sub.hidden=true;return}if(['alerts-management','darkweb','cybercrime-monitoring','compromised-cards','compromised-files','data-leaks','threat-actor-library','malware-families','ioc-lookup','sensor-intelligence','botshield','ransomware-extortion','threat-lens','threat-detection-rules','hacktivism','attack-surface-dashboard','asset-inventory','issue-catalog','issue-detail','ssl-tls','signatures','signature-detail','on-demand-scan','cloud-connectors','malicious-domains','social-media-monitoring','watchlisted-domains','website-monitoring','website-watermarking','takedown-tracker','mobile-application-monitoring','executive-monitoring'].includes(key)){executive.hidden=true;sub.hidden=false;return}const d=pageData[key];if(!d)return;executive.hidden=true;sub.hidden=false;if(key==='alerts'||key==='operational'||key==='advisories'||key==='newsflash'||key==='newsfeed'||key==='mssp'){return}sub.querySelector('h1').textContent=d[0];sub.querySelector('.subpage-head p').textContent=d[1];sub.querySelector('.subpage-grid').className='subpage-grid';sub.querySelector('.subpage-grid').innerHTML=d[2].map(x=>`<article class="subpage-card"><h3>${x[0]}</h3><strong>${x[1]}</strong><p>${x[2]}</p></article>`).join('')}
 
 
 function syncPrimaryNavActive(page){
  const dashboardPages=new Set(['executive','alerts','operational','advisories','newsflash','newsfeed','mssp']);
- const group=['attack-surface-dashboard','asset-inventory','issue-catalog','issue-detail','ssl-tls','signatures','signature-detail','on-demand-scan','cloud-connectors'].includes(page)?'attack-surface':dashboardPages.has(page)?'dashboard':page==='alerts-management'?'alerts':page==='data-leaks'?'data-leaks':['malicious-domains','social-media-monitoring','watchlisted-domains','website-monitoring','website-watermarking','takedown-tracker','mobile-application-monitoring'].includes(page)?'brand-intelligence':['threat-actor-library','malware-families','ioc-lookup','sensor-intelligence','botshield','ransomware-extortion','threat-lens','threat-detection-rules','hacktivism'].includes(page)?'threat-intelligence':(['darkweb','cybercrime-monitoring','compromised-cards','compromised-files'].includes(page)?'darkweb':null);
+ const group=['attack-surface-dashboard','asset-inventory','issue-catalog','issue-detail','ssl-tls','signatures','signature-detail','on-demand-scan','cloud-connectors'].includes(page)?'attack-surface':dashboardPages.has(page)?'dashboard':page==='alerts-management'?'alerts':page==='data-leaks'?'data-leaks':['malicious-domains','social-media-monitoring','watchlisted-domains','website-monitoring','website-watermarking','takedown-tracker','mobile-application-monitoring'].includes(page)?'brand-intelligence':page==='executive-monitoring'?'executive-monitoring':['threat-actor-library','malware-families','ioc-lookup','sensor-intelligence','botshield','ransomware-extortion','threat-lens','threat-detection-rules','hacktivism'].includes(page)?'threat-intelligence':(['darkweb','cybercrime-monitoring','compromised-cards','compromised-files'].includes(page)?'darkweb':null);
  document.querySelectorAll('.rail-icons [data-nav-group]').forEach(b=>b.classList.toggle('on',!!group&&b.dataset.navGroup===group));
 }
 
+function syncExecutiveFlyoutActive(page,tab){document.querySelectorAll('.executive-flyout [data-execpage]').forEach(b=>b.classList.toggle('active',page==='executive-monitoring'&&b.dataset.execpage===(tab||'overview')));}
 function syncBrandFlyoutActive(page){document.querySelectorAll('.brand-flyout [data-brandpage]').forEach(b=>b.classList.toggle('active',b.dataset.brandpage===page));}
 function syncAttackFlyoutActive(page){const target=page==='issue-detail'?'issue-catalog':page;document.querySelectorAll('.asm-flyout [data-attackpage]').forEach(b=>b.classList.toggle('active',b.dataset.attackpage===target));}
 function syncThreatFlyoutActive(page){document.querySelectorAll('.threat-flyout [data-threatpage]').forEach(b=>b.classList.toggle('active',b.dataset.threatpage===page));}
@@ -35,6 +36,7 @@ function routeTo(page,tab,replace=true){
  syncDarkwebFlyoutActive(page);
  syncAttackFlyoutActive(page);
  syncBrandFlyoutActive(page);
+ syncExecutiveFlyoutActive(page,resolvedTab);
  window.dispatchEvent(new CustomEvent('cyble:route',{detail:{page,tab:resolvedTab}}));
 }
 document.querySelectorAll('.dash-menu a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();routeTo(a.dataset.page,null)}));
@@ -47,6 +49,7 @@ syncThreatFlyoutActive(initialPage);
 syncDarkwebFlyoutActive(initialPage);
 syncAttackFlyoutActive(initialPage);
 syncBrandFlyoutActive(initialPage);
+syncExecutiveFlyoutActive(initialPage,initialParams.get('tab'));
 if(!initialParams.get('page')) routeTo(initialPage,initialParams.get('tab'));
 
 window.addEventListener('cyble:route',e=>{if((e.detail?.page||new URLSearchParams(location.search).get('page'))==='malicious-domains') window.renderMaliciousDomains?.();});
@@ -65,3 +68,6 @@ if(new URLSearchParams(location.search).get('page')==='takedown-tracker') setTim
 
 window.addEventListener('cyble:route',e=>{if((e.detail?.page||new URLSearchParams(location.search).get('page'))==='mobile-application-monitoring') window.renderMobileApplicationMonitoring?.();});
 if(new URLSearchParams(location.search).get('page')==='mobile-application-monitoring') setTimeout(()=>window.renderMobileApplicationMonitoring?.(),0);
+
+window.addEventListener('cyble:route',e=>{if((e.detail?.page||new URLSearchParams(location.search).get('page'))==='executive-monitoring') window.renderExecutiveMonitoring?.();});
+if(new URLSearchParams(location.search).get('page')==='executive-monitoring') setTimeout(()=>window.renderExecutiveMonitoring?.(),0);
