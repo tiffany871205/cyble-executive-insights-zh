@@ -9,3 +9,12 @@
 .cc-guide pre{padding:0 24px 20px;font-family:inherit;font-size:15px;line-height:1.45}
 .cc-guide pre b{display:flex;align-items:center;justify-content:space-between;margin:0 -24px 18px;padding:11px 24px;font-family:inherit;font-size:14px;letter-spacing:.02em}
 .cc-guide pre b span{font-weight:400;letter-spacing:0;color:#9aa1b1}
+
+/* Connector guide code blocks wrap long lines instead of creating an X-axis scrollbar. */
+.cc-guide pre{
+  overflow-x:hidden;
+  overflow-y:auto;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
