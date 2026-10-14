@@ -17,4 +17,6 @@ function render(){
     <section class="rm-scroll"><div class="rm-grid">${reports.map(r=>`<article class="rm-card"><div class="rm-card-top"><i>▧</i><div><h3>${r.range}</h3><p>Alert Report（警示報告） · ${r.id}</p></div></div><div class="rm-status-row"><span>● READY（就緒）</span><button>⇩</button></div><hr><div class="rm-meta"><span>▥ 星瀚科技</span><span>♙ 林致遠</span></div><hr><footer>▣ Generated on（產生日期）：${r.generated}</footer></article>`).join('')}</div></section>`;
 }
 window.renderReportsManagement=render;
+window.addEventListener('cyble:route',e=>{if((e.detail?.page||new URLSearchParams(location.search).get('page'))==='reports-management')render();});
+if(new URLSearchParams(location.search).get('page')==='reports-management')setTimeout(render,0);
 })();
