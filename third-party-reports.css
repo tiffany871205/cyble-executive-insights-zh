@@ -30,3 +30,12 @@
 .tpr-detail-actions{display:flex;justify-content:flex-end;gap:8px}
 .tpr-detail-actions button{width:38px;height:38px;border:0;border-radius:10px;background:#202127;color:#e2e5eb;font-size:15px}
 .tpr-detail-actions button:hover{background:#292b33}
+
+/* Keep the vendor summary row at the reference height while expanded details render below it. */
+.tpr-row{cursor:pointer;min-height:66px!important}
+.tpr-row.open{min-height:66px!important}
+.tpr-row.open .tpr-expanded{grid-row:2;grid-column:1/-1}
+.tpr-chevron{display:grid;place-items:center;line-height:1;cursor:pointer}
+.tpr-row>button,.tpr-row>div:not(.tpr-expanded){align-self:center}
+/* The title help icon must remain a true circle; global heading/button rules must not stretch it. */
+.tpr-head h1 .tpr-help{display:inline-flex!important;flex:0 0 22px!important;width:22px!important;min-width:22px!important;max-width:22px!important;height:22px!important;min-height:22px!important;max-height:22px!important;box-sizing:border-box!important;padding:0!important;margin-left:6px!important;border-radius:50%!important;align-items:center!important;justify-content:center!important;line-height:1!important;font-size:13px!important;vertical-align:3px!important}
