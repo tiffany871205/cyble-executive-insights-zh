@@ -5,7 +5,19 @@ const cards=[
  ['台灣資服','KEYWORD','~0','16 Sept 2026',['CODE ANALYSIS - GITHUB','CLOUD STORAGE','CODE ANALYSIS - BITBUCKET']],
  ['奇峰科技','KEYWORD','~18','11 Oct 2026',['PHISHING MONITORING','CLOUD STORAGE']],
  ['宜誠資訊','KEYWORD','~7','09 Oct 2026',['RANSOMWARE INCIDENTS','CODE ANALYSIS - GITHUB']],
- ['恆遠教育','KEYWORD','~2','08 Oct 2026',['PHISHING MONITORING','CLOUD STORAGE']]
+ ['恆遠教育','KEYWORD','~2','08 Oct 2026',['PHISHING MONITORING','CLOUD STORAGE']],
+ ['星橋數位','KEYWORD','~43','07 Oct 2026',['PHISHING MONITORING','RANSOMWARE INCIDENTS','CLOUD STORAGE']],
+ ['雲峯網路','DOMAIN','~126','06 Oct 2026',['CODE ANALYSIS - GITHUB','CLOUD STORAGE','PHISHING MONITORING']],
+ ['安境科技','KEYWORD','~11','05 Oct 2026',['RANSOMWARE INCIDENTS','CODE ANALYSIS - BITBUCKET']],
+ ['藍海資料','KEYWORD','~29','04 Oct 2026',['CLOUD STORAGE','PHISHING MONITORING']],
+ ['遠景軟體','DOMAIN','~74','03 Oct 2026',['CODE ANALYSIS - GITHUB','CODE ANALYSIS - BITBUCKET']],
+ ['昕曜系統','KEYWORD','~5','02 Oct 2026',['PHISHING MONITORING','CLOUD STORAGE']],
+ ['森川資訊','KEYWORD','~21','30 Sept 2026',['RANSOMWARE INCIDENTS','PHISHING MONITORING']],
+ ['光域科技','DOMAIN','~188','29 Sept 2026',['CLOUD STORAGE','CODE ANALYSIS - GITHUB','PHISHING MONITORING']],
+ ['北辰雲端','KEYWORD','~13','28 Sept 2026',['CODE ANALYSIS - BITBUCKET','CLOUD STORAGE']],
+ ['澄海數據','KEYWORD','~9','27 Sept 2026',['RANSOMWARE INCIDENTS','CLOUD STORAGE']],
+ ['峰岳資訊','DOMAIN','~67','26 Sept 2026',['PHISHING MONITORING','CODE ANALYSIS - GITHUB']],
+ ['新域整合','KEYWORD','~16','25 Sept 2026',['RANSOMWARE INCIDENTS','CODE ANALYSIS - BITBUCKET','CLOUD STORAGE']]
 ];
 function help(){return `<span class="ch-help">?<span class="ch-help-pop">Manage keywords, executives, brand dictionary, assets, products, and cloud accounts for your organization.<br><span>管理組織的關鍵字、高階主管、品牌字典、資產、產品與雲端帳號。</span><a href="#">↗ Visit Help Center（前往說明中心）</a></span></span>`}
 function card(x){return `<article class="ch-card"><div class="ch-card-title"><span>□</span><b>${x[0]}</b><em>✓ ACTIVE（啟用）</em><button>⋮</button></div><p>▥ Demo Information Co., Ltd.　⌁ Demo Partner</p><strong>${x[1]}</strong><div class="ch-alert"><small>ALERT COUNT（警示數）</small><b>${x[2]}</b><i></i><small>in last 30 days（最近 30 天）</small><h4>SERVICES（服務）</h4><div>${x[4].map((s,i)=>`<span>${s}</span>`).join('')}<span>+${x[4].length+2}</span></div></div><footer>◷ ${x[3]}</footer></article>`}
