@@ -39,3 +39,12 @@
 .tpr-row>button,.tpr-row>div:not(.tpr-expanded){align-self:center}
 /* The title help icon must remain a true circle; global heading/button rules must not stretch it. */
 .tpr-head h1 .tpr-help{display:inline-flex!important;flex:0 0 22px!important;width:22px!important;min-width:22px!important;max-width:22px!important;height:22px!important;min-height:22px!important;max-height:22px!important;box-sizing:border-box!important;padding:0!important;margin-left:6px!important;border-radius:50%!important;align-items:center!important;justify-content:center!important;line-height:1!important;font-size:13px!important;vertical-align:3px!important}
+
+/* Vendor summary and expanded reports are separate rows so opening details never compresses the summary. */
+.tpr-vendor{display:block;border-top:1px solid #20222a}
+.tpr-vendor:first-child{border-top:0}
+.tpr-vendor>.tpr-row{height:66px!important;min-height:66px!important;box-sizing:border-box!important;border-top:0!important;padding:0 18px!important}
+.tpr-vendor.open>.tpr-row{height:66px!important;min-height:66px!important;background:#1b1c22}
+.tpr-vendor>.tpr-expanded{display:none!important;margin:0!important}
+.tpr-vendor.open>.tpr-expanded{display:block!important}
+.tpr-vendor.open .tpr-chevron{transform:rotate(90deg)}
