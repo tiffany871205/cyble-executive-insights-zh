@@ -19,3 +19,14 @@
 .tpr-table footer{margin-top:auto;height:72px!important}
 .tpr-help{border:2px solid #5aa2ff!important;color:#65a8ff!important}
 @media(max-width:1150px){.tpr-head{grid-template-columns:1fr 235px!important}.tpr-actions{justify-self:end}.tpr-filters{overflow-x:auto}}
+
+/* Expanded vendor report rows match the reference table. */
+.tpr-expanded{grid-column:1/-1!important;margin:0 -18px!important;padding:0!important;border:0!important;border-radius:0!important;background:#0c0d11!important;display:none!important;grid-template-columns:1fr!important;gap:0!important}
+.tpr-row.open .tpr-expanded{display:block!important}
+.tpr-detail-head,.tpr-detail-row{display:grid;grid-template-columns:minmax(420px,2.4fr) 145px 145px 190px 170px;align-items:center;padding-left:120px;padding-right:78px}
+.tpr-detail-head{height:46px;color:#697181;border-top:1px solid #202229;border-bottom:1px solid #202229}
+.tpr-detail-row{min-height:70px;color:#d5d9e2;border-bottom:1px solid #202229}
+.tpr-detail-row:last-child{border-bottom:0}
+.tpr-detail-actions{display:flex;justify-content:flex-end;gap:8px}
+.tpr-detail-actions button{width:38px;height:38px;border:0;border-radius:10px;background:#202127;color:#e2e5eb;font-size:15px}
+.tpr-detail-actions button:hover{background:#292b33}
