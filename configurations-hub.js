@@ -44,6 +44,7 @@ function wire(g,section){
  g.querySelectorAll('.ch-side [data-section]').forEach(b=>b.onclick=()=>setSection(b.dataset.section));
  g.querySelectorAll('[data-asset-tab]').forEach(b=>b.onclick=()=>setAssetTab(b.dataset.assetTab));
  g.querySelectorAll('[data-asm-tab]').forEach(b=>b.onclick=()=>setAsmTab(b.dataset.asmTab));
+ const dropdowns=[...g.querySelectorAll('details.ch-add-dd, details.ch-product-add')];dropdowns.forEach(d=>d.addEventListener('toggle',()=>{if(d.open)dropdowns.forEach(x=>{if(x!==d)x.open=false})}));if(window.__chOutsideClose)document.removeEventListener('click',window.__chOutsideClose);window.__chOutsideClose=e=>{if(!g.isConnected)return;if(!e.target.closest('details.ch-add-dd, details.ch-product-add'))dropdowns.forEach(d=>d.open=false)};document.addEventListener('click',window.__chOutsideClose);
  if(section==='keywords'){const host=g.querySelector('.ch-modal-host'),open=()=>{host.hidden=false;g.querySelector('.ch-add-dd').open=false},close=()=>host.hidden=true;g.querySelector('[data-add-keyword]').onclick=open;host.querySelector('.ch-modal-x').onclick=close;host.querySelector('.ch-cancel').onclick=close;host.querySelector('.ch-modal-backdrop').onclick=close}
  if(section==='executives')g.querySelector('[data-add-exec]').onclick=()=>setSection('add-executive');
  if(section==='add-executive'){g.querySelector('[data-back-exec]').onclick=()=>setSection('executives');g.querySelector('[data-cancel-exec]').onclick=()=>setSection('executives')}
