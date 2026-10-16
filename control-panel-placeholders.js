@@ -1,6 +1,5 @@
 (()=>{
 const pages={
-'company-management':['Company Management（公司管理）','Manage company information and organizational settings.（管理公司資訊與組織設定。）'],
 'alert-settings':['Alert Settings（警示設定）','Configure alert preferences and processing rules.（設定警示偏好與處理規則。）'],
 'notification-settings':['Notifications Settings（通知設定）','Configure notification delivery and preferences.（設定通知傳送方式與偏好。）'],
 'application-settings':['Application Settings（應用程式設定）','Manage application-level preferences.（管理應用程式層級設定。）']};
